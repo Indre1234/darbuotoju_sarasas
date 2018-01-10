@@ -64,7 +64,23 @@
         android:layout_weight="0.10"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"/>
-    
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
+
+
+
+    <Button
+        android:id="@+id/registration_button"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/registration_button"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"/>
+
+
 
 
 
