@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  * Created by moksleivis on 2018-01-10.
  */
 
-public class Validation {
+/*public class Validation {
 
     public static boolean isValidEmail(CharSequence target) {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
@@ -24,4 +24,22 @@ public class Validation {
         return matcher.matches();
     }
 
+}*/
+
+
+public class Validation {
+    public static boolean isValid(String credentials) {
+        final String CREDENTIALS_PATTERN = "^[0-9a-zA-Z]{3,15}$";
+        Pattern pattern = Pattern.compile(CREDENTIALS_PATTERN);
+
+        Matcher matcher = pattern.matcher (credentials);
+        return matcher.matches();
+    }
+    public static boolean isValidEmail(String credentials) {
+        final String CREDENTIALS_PATTERN = "^\\D.+@.+\\.[a-z]+";
+        Pattern pattern = Pattern.compile(CREDENTIALS_PATTERN);
+
+        Matcher matcher = pattern.matcher (credentials);
+        return matcher.matches();
+    }
 }

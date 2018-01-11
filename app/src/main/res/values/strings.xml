@@ -11,5 +11,6 @@
     <string name="registration_password">Vartotojo slaptažodis</string>
     <string name="registration_finish_button">Registruoti naują vartotoją</string>
     <string name="registration_button">Registruotis</string>
+    <string name="remember_me">Prisiminti mane</string>>
 
 </resources>

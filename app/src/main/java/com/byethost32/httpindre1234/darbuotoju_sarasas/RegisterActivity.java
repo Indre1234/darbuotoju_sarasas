@@ -18,7 +18,7 @@ import java.net.URL;
 public class RegisterActivity extends Activity {
 
     // kelias byethost iki register.php failiuko
-    private static final String REGISTER_URL = "http://indre1234.byethost32.com/registration%20user/mobile/register.php";
+    private static final String REGISTER_URL = "http://indre1234.byethost32.com/mobile/register.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +37,12 @@ public class RegisterActivity extends Activity {
         registration_Finish_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Validation.isValid(registrationUserName.getText().toString()) && Validation.isValid(registrationEmail.getText().toString()) && Validation.isValid(registrationPassword.getText().toString())) {
-                    registerUser(registrationUserName.getText().toString(), registrationEmail.getText().toString(), registrationPassword.getText().toString());
+                if (Validation.isValid(registrationUserName.getText().toString()) && Validation.isValidEmail(registrationEmail.getText().toString()) && Validation.isValid(registrationPassword.getText().toString())){
+
+                    registerUser(registrationUserName.getText().toString(), registrationPassword.getText().toString(), registrationEmail.getText().toString());
                     Intent goToRegistrationActivity = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(goToRegistrationActivity);
+                    Toast.makeText(RegisterActivity.this, "Sekmingai užregistruotas naujas vartotojas", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(RegisterActivity.this, "Blogai įvesti duomenys", Toast.LENGTH_LONG).show();
                 }
@@ -48,6 +50,8 @@ public class RegisterActivity extends Activity {
         });
 
     }
+
+
 
     private void registerUser(String username, String password, String email) {
         String urlSuffix = "?username="+username+"&password="+password+"&email="+email;

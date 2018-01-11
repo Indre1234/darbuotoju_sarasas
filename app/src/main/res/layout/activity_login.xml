@@ -49,8 +49,18 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:hint="@string/login_password"
-        android:fontFamily="@string/login_username"/>
-    
+        android:fontFamily="@string/login_username" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
+
+    <CheckBox
+        android:id="@+id/remember_me"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/remember_me" />
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="15dp" />
