@@ -11,6 +11,15 @@
     <string name="registration_password">Vartotojo slaptažodis</string>
     <string name="registration_finish_button">Registruoti naują vartotoją</string>
     <string name="registration_button">Registruotis</string>
-    <string name="remember_me">Prisiminti mane</string>>
+    <string name="remember_me">Prisiminti mane</string>
+    <string name="new_work_button">Įrašyti nauja darbuotoją</string>
+    <string name="new_work_name">Vardas</string>
+    <string name="new_secondname">Pavardė</string>
+    <string name="new_personal_code">Asmens kodas</string>
+    <string name="new_position">Pareigos</string>
+    <string name="new_pay">Atlyginimas</string>
+    <string name="new_work_rating_data">Darbuotojo vertinimo data</string>
+    <string name="new_gender">Lytis</string>
+    <string name="new_entry_work_button">%traukti nauja darbuotoja</string>
 
 </resources>

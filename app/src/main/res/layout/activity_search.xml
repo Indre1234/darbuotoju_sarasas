@@ -45,13 +45,29 @@
         android:layout_height="30dp" />
 
     <Button
-        android:layout_width="match_parent"
+        android:id="@+id/search_button"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/search_button"
         android:layout_weight="0.10"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <Button
+        android:id="@+id/new_work_button"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/new_work_button"
+        android:layout_weight="0.10"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite" />
+
 
 
 
