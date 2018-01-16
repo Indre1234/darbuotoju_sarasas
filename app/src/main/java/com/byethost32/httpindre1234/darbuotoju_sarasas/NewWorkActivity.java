@@ -6,8 +6,14 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -19,27 +25,86 @@ public class NewWorkActivity extends AppCompatActivity {
     // kelias byethost iki register.php failiuko
     private static final String REGISTER_URL = "http://indre1234.byethost32.com/mobile/new_work.php";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_work);
 
+        final CheckBox rd_2014 = (CheckBox) findViewById(R.id.rd_2014);
+        final CheckBox rd_2015 = (CheckBox) findViewById(R.id.rd_2015);
+        final CheckBox rd_2016 = (CheckBox) findViewById(R.id.rd_2016);
+        final CheckBox rd_2017 = (CheckBox) findViewById(R.id.rd_2017);
+        final CheckBox rd_2018 = (CheckBox) findViewById(R.id.rd_2018);
+
+        final RadioGroup genders = (RadioGroup) findViewById(R.id.new_gender);
+        final RadioButton[] gender = new RadioButton[1];
+
+        final Spinner new_position = (Spinner) findViewById(R.id.new_position);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(NewWorkActivity.this,
+                R.array.new_position, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        new_position.setAdapter(adapter);
+
+
+
+
+
+
         Button entry_new_work = (Button) findViewById(R.id.new_work_entry_button);
         final EditText new_work_name = (EditText) findViewById(R.id.new_work_name);
         final EditText new_work_secondname = (EditText) findViewById(R.id.new_work_socondname);
 
-        final EditText new_position = (EditText) findViewById(R.id.new_position);
+        final EditText new_pay = (EditText) findViewById(R.id.new_pay);
+
+
+
 
 
 
         entry_new_work.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Validation.isValid(new_work_name.getText().toString()) && Validation.isValid(new_work_secondname.getText().toString()) && Validation.isValid(new_position.getText().toString())){
 
-                    registerUser(new_work_name.getText().toString(), new_work_secondname.getText().toString(), new_position.getText().toString());
+                int selectedID = genders.getCheckedRadioButtonId();
+                gender[0] = (RadioButton) findViewById(selectedID);
+
+
+
+                StringBuffer vData = new StringBuffer();
+                if (rd_2014.isChecked()) {
+                    vData.append(getResources().getString(R.string.rd_2014)).append(",");
+                }
+
+                if (rd_2015.isChecked()) {
+                    vData.append(getResources().getString(R.string.rd_2015)).append(" ");
+                }
+
+                if (rd_2016.isChecked()) {
+                    vData.append(getResources().getString(R.string.rd_2016)).append(" ");
+                }
+
+                if (rd_2017.isChecked()) {
+                    vData.append(getResources().getString(R.string.rd_2017)).append(" ");
+                }
+
+                if (rd_2018.isChecked()) {
+                    vData.append(getResources().getString(R.string.rd_2018)).append(" ");
+                }
+
+
+
+                Toast.makeText(NewWorkActivity.this,vData+"\n"+gender[0].getText().toString()+"\n"+new_position.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
+
+                if (Validation.isValid(new_work_name.getText().toString()) && Validation.isValid(new_work_secondname.getText().toString())){
+
+                    registerUser(new_work_name.getText().toString(), new_work_secondname.getText().toString(), new_pay.getText().toString());
+
                     Intent goToSearchActivity = new Intent(NewWorkActivity.this, SearchActivity.class);
                     startActivity(goToSearchActivity);
+
                     Toast.makeText(NewWorkActivity.this, "Darbuotojas sekmingai įtrauktas į lentelę", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(NewWorkActivity.this, "Blogai įvesti duomenys", Toast.LENGTH_LONG).show();
@@ -51,8 +116,8 @@ public class NewWorkActivity extends AppCompatActivity {
 
 
 
-    private void registerUser(String name, String secondname, String position) {
-        String urlSuffix = "?name="+name+"&secondname="+secondname+"&position="+position;
+    private void registerUser(String name, String secondname, String pay) {
+        String urlSuffix = "?name="+name+"&secondname="+secondname+"&pay="+pay;
         class RegisterUser extends AsyncTask<String, Void, String> {
 
             ProgressDialog loading;

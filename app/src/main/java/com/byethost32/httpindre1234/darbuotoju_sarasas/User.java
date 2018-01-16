@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 
-public class User {
+ public class User {
 
     private String username, password, email;
     private static final String PREFERENCES_FILE_NAME = "com.byethost32.httpindre1234.darbuotoju_sarasas";

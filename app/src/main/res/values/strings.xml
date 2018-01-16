@@ -4,22 +4,43 @@
     <string name="login_username">Prisijungimo vardas</string>
     <string name="login_password">Slaptažodis</string>
     <string name="login_submit">Prisijungti</string>
+
     <string name="search_field">Įrašykite ko ieškote</string>
     <string name="search_button">Ieškoti</string>
+
     <string name="registration_username">Vartotojo vardas</string>
     <string name="registration_email">Vartotojo el. paštas</string>
     <string name="registration_password">Vartotojo slaptažodis</string>
     <string name="registration_finish_button">Registruoti naują vartotoją</string>
     <string name="registration_button">Registruotis</string>
+
     <string name="remember_me">Prisiminti mane</string>
+
     <string name="new_work_button">Įrašyti nauja darbuotoją</string>
     <string name="new_work_name">Vardas</string>
     <string name="new_secondname">Pavardė</string>
+
+
+    <string-array name="new_position">Pareigos
+        <item>Apskaitininkas</item>
+        <item>Buhalteris</item>
+        <item>Direktorius</item>
+    </string-array>
+
+
     <string name="new_personal_code">Asmens kodas</string>
-    <string name="new_position">Pareigos</string>
     <string name="new_pay">Atlyginimas</string>
+
     <string name="new_work_rating_data">Darbuotojo vertinimo data</string>
+<string name="rd_2014">2014</string>
+    <string name="rd_2015">2015</string>
+    <string name="rd_2016">2016</string>
+    <string name="rd_2017">2017</string>
+    <string name="rd_2018">2018</string>
+
     <string name="new_gender">Lytis</string>
-    <string name="new_entry_work_button">%traukti nauja darbuotoja</string>
+    <string name="women">Moteris</string>
+    <string name="men">Vyras</string>
+    <string name="new_entry_work_button">Įtraukti naują darbuotoją</string>
 
 </resources>
