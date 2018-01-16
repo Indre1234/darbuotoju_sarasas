@@ -99,15 +99,18 @@ public class NewWorkActivity extends AppCompatActivity {
                 Toast.makeText(NewWorkActivity.this,vData+"\n"+gender[0].getText().toString()+"\n"+new_position.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
 
                 if (Validation.isValid(new_work_name.getText().toString()) && Validation.isValid(new_work_secondname.getText().toString())){
-
+                    Toast.makeText(NewWorkActivity.this,
+                            new_work_name.getText().toString()+"\n"+
+                                    new_work_secondname.getText().toString()+"\n"+
+                                    new_pay.getText().toString(), Toast.LENGTH_LONG).show();
                     registerUser(new_work_name.getText().toString(), new_work_secondname.getText().toString(), new_pay.getText().toString());
 
                     Intent goToSearchActivity = new Intent(NewWorkActivity.this, SearchActivity.class);
                     startActivity(goToSearchActivity);
 
-                    Toast.makeText(NewWorkActivity.this, "Darbuotojas sekmingai įtrauktas į lentelę", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(NewWorkActivity.this, "Darbuotojas sekmingai įtrauktas į lentelę", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(NewWorkActivity.this, "Blogai įvesti duomenys", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(NewWorkActivity.this, "Blogai įvesti duomenys", Toast.LENGTH_LONG).show();
                 }
             }
         });
