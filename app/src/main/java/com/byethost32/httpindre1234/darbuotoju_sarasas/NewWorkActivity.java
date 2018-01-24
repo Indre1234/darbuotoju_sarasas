@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -23,7 +22,7 @@ import java.net.URL;
 
 public class NewWorkActivity extends AppCompatActivity {
     // kelias byethost iki register.php failiuko
-    private static final String REGISTER_URL = "http://indre1234.byethost32.com/mobile/new_work.php";
+    private static final String NEW_WORK_URL = "http://indre1234.byethost32.com/mobile/new_work.php";
 
 
     @Override
@@ -56,6 +55,7 @@ public class NewWorkActivity extends AppCompatActivity {
         Button entry_new_work = (Button) findViewById(R.id.new_work_entry_button);
         final EditText new_work_name = (EditText) findViewById(R.id.new_work_name);
         final EditText new_work_secondname = (EditText) findViewById(R.id.new_work_socondname);
+        final EditText new_personal_code = (EditText) findViewById(R.id.new_personal_code);
 
         final EditText new_pay = (EditText) findViewById(R.id.new_pay);
 
@@ -103,7 +103,21 @@ public class NewWorkActivity extends AppCompatActivity {
                             new_work_name.getText().toString()+"\n"+
                                     new_work_secondname.getText().toString()+"\n"+
                                     new_pay.getText().toString(), Toast.LENGTH_LONG).show();
-                    registerUser(new_work_name.getText().toString(), new_work_secondname.getText().toString(), new_pay.getText().toString());
+                    /*registerUser(new_work_name.getText().toString(),
+                                new_work_secondname.getText().toString(),
+                                new_personal_code.getText().toString(),
+                                new_position.getSelectedItem(),
+                                new_pay.getText().toString());*/
+
+
+                    User user = new User(NewWorkActivity.this);
+                    newWork(new_work_name.getText().toString(),
+                            new_work_secondname.getText().toString(),
+                            new_personal_code.getText().toString(),
+                            new_position.getSelectedItem().toString(),
+                            new_pay.getText().toString(),
+                            vData.toString(),
+                            gender[0].getText().toString());
 
                     Intent goToSearchActivity = new Intent(NewWorkActivity.this, SearchActivity.class);
                     startActivity(goToSearchActivity);
@@ -119,9 +133,9 @@ public class NewWorkActivity extends AppCompatActivity {
 
 
 
-    private void registerUser(String name, String secondname, String pay) {
-        String urlSuffix = "?name="+name+"&secondname="+secondname+"&pay="+pay;
-        class RegisterUser extends AsyncTask<String, Void, String> {
+    private void newWork(String vardas, String pavarde, String asmens_kodas, String pareigos, String atlyginimas, String v_data, String lytis) {
+        String urlSuffix = "?vardas="+vardas+"&pavarde="+pavarde+"&asmens_kodas="+asmens_kodas+"&pareigos="+pareigos+"&atlyginimas="+atlyginimas+"&v_data="+v_data+"&lytis="+lytis;
+        class newWork extends AsyncTask<String, Void, String> {
 
             ProgressDialog loading;
 
@@ -145,7 +159,7 @@ public class NewWorkActivity extends AppCompatActivity {
 
                 BufferedReader bufferedReader = null;
                 try {
-                    URL url = new URL(REGISTER_URL+s);
+                    URL url = new URL(NEW_WORK_URL +s);
                     HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
                     // byethost naudoja antibot sistema, todel reikia kiekvienam rankutėmis suvesti cookie turinį,
@@ -165,7 +179,7 @@ public class NewWorkActivity extends AppCompatActivity {
             }
         }
 
-        RegisterUser ru = new RegisterUser();
+        newWork ru = new newWork();
         ru.execute(urlSuffix);
     }
 }
